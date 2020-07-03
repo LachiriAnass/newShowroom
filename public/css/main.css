@@ -1,0 +1,57 @@
+.showroom-icon {
+height: 33px;
+}
+
+.search-bar select {
+border-radius: 50px 0 0 50px;
+}
+
+.search-bar input {
+border-radius: 0;
+}
+
+.search-bar .btn-outline-success {
+background-color: #38c172;
+color: #fff;
+border-radius: 0 50px 50px 0;
+margin-right: 20px;
+}
+
+.search-bar .btn-outline-success:hover {
+color: #38c172;
+background-color: #fff;
+border-radius: 0 50px 50px 0;
+margin-right: 20px;
+}
+
+.explore{
+    border-color: #38c172;
+    background-color: #38c172;
+    color: #fff;
+    border-radius: 50px 50px 50px 50px;
+    margin-left: 20px;
+}
+
+.explore:hover{
+
+    border-color: #38c172;
+    color: #38c172;
+    background-color: #fff;
+    border-radius: 50px 50px 50px 50px;
+    margin-left: 20px;
+}
+
+.btn{
+    border-color: #38c172;
+    background-color: #38c172;
+    color: #fff;
+    border-radius: 50px 50px 50px 50px;
+}
+
+.btn:hover{
+
+    border-color: #38c172;
+    color: #38c172;
+    background-color: #fff;
+    border-radius: 50px 50px 50px 50px;
+}
