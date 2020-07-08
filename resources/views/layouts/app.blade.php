@@ -56,6 +56,9 @@
                                 </svg>
                                 </button>
                             </form>
+                            @auth
+                            <a href="/create_gallery" class="btn btn-primary new_gallery">New Gallery</a>
+                            @endauth
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>

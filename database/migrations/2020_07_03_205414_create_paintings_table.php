@@ -15,7 +15,9 @@ class CreatePaintingsTable extends Migration
     {
         Schema::create('paintings', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('title');
+            $table->text('description');
+            $table->string('image')->nullable();
             $table->unsignedBigInteger('gallery_id');
             $table->timestamps();
 
