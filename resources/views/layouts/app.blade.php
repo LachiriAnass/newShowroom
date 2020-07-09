@@ -46,6 +46,7 @@
                                 <select name="category" class="category-filter custom-select">
                                     <option value="all">All</option>
                                     <option value="gallery">Gallery</option>
+                                    <option value="painting">Painting</option>
                                     <option value="artist">Artist</option>
                                 </select>
                                 <input class="form-control" type="search" placeholder="Search" aria-label="Search" name="search_text">

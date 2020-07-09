@@ -34,3 +34,4 @@ Route::post('/delete_painting/{painting_id}', 'PaintingController@destroy')->mid
 Route::get('/profile/{user_id}', 'ProfileController@show');
 Route::post('/modify_profile/{user_id}', 'ProfileController@update')->middleware('auth');
 
+Route::get('/search', 'SearchController@index')->middleware('auth');

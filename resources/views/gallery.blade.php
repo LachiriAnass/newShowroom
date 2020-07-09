@@ -43,7 +43,7 @@
     <div class="row justify-content-center">
         @forelse($paintings as $painting)
         <div class="col-md-4 painting-card">
-            <div class="card" style="width: 18rem;">
+            <div class="card" style="width: 18rem; margin: auto;">
                 <img src="/storage/public/painting/{{ $painting->image }}" class="card-img-top card-painting-img" alt="{{ $painting->title }}">
                 <div class="card-body text-center">
                     <h5 class="card-title">{{ $painting->title }}</h5>
