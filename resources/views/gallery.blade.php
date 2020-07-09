@@ -52,7 +52,7 @@
             </div>
         </div>
         @empty
-        <div class="alert alert-primary text-center col-md-12" role="alert" style="width:100%;">
+        <div class="alert alert-primary text-center" role="alert" style="width:100%;">
             You don't have any painting yet!! Fill and submit the form below to add a new one.
         </div>
         @endforelse

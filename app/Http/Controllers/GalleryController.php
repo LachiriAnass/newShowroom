@@ -16,7 +16,7 @@ class GalleryController extends Controller
 
     public function index()
     {
-        $galleries = Gallery::all();
+        $galleries = Gallery::where('user_id', Auth::id())->get();
         return view('galleries', ['galleries' => $galleries]);
     }
 

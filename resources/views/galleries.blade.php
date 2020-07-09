@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="container">
+    <h1 class="text-center">My Galleries</h1><br><br>
     <div class="row">
         @forelse($galleries as $gallery)
         <div class="col-md-4 painting-card">
