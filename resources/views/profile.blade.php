@@ -10,7 +10,7 @@
                 <h1>{{$user->name}}</h1>
             </div>
             <hr>
-            <h3 class="text-left">Artist's galleries</h3>
+            <h3 class="text-left margin-left-40">Artist's galleries</h3><br>
             <div class="row">
                 @forelse($galleries as $gallery)
                 <div class="col-md-4 painting-card">

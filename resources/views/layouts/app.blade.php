@@ -36,7 +36,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        <button class="btn btn-primary explore">Explore</button>
+                        <a href="/explore" class="btn btn-primary explore">Explore</a>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
