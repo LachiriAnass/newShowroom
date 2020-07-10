@@ -12,27 +12,36 @@
 
 <!-- The slideshow -->
 <div class="carousel-inner">
-  <div class="carousel-item active">
-    <img src="imgs/paintings.jpg" alt="Discover" width="1100" height="500">
+<div class="carousel-item active">
+    <div class="carousel-img" style="background-image: url('imgs/paintings.jpg');">
+        <div class="blackish"></div>
+    </div>
     <div class="carousel-caption">
       <h1 class="headers">Discover</h1>
-      <p class="para" style="color:blue">Discover new paintings</p>
+      <p class="para">Discover new paintings</p>
     </div>
   </div>
+
   <div class="carousel-item">
-    <img src="imgs/coast-painting.jpg" alt="Follow" width="1100" height="500">
+    <div class="carousel-img" style="background-image: url('imgs/paint.png');">
+        <div class="blackish"></div>
+    </div>
     <div class="carousel-caption">
-      <h1 class="headers">Follow</h1>
-      <p class="para" style="color:red">Follow your favorite artists</p>
+      <h1 class="headers">Upvote</h1>
+      <p class="para">Upvote your favorite artists</p>
     </div>
   </div>
+
   <div class="carousel-item">
-    <img src="imgs/artist.jpg" alt="Upload" width="1100" height="500">
+    <div class="carousel-img" style="background-image: url('imgs/coast-painting.jpg');">
+        <div class="blackish"></div>
+    </div>
     <div class="carousel-caption">
       <h1 class="headers">Upload</h1>
-      <p class="para" style="color:yellow">Upload your own paintings</p>
+      <p class="para">Upload your own paintings</p>
     </div>
   </div>
+
 </div>
 
 <!-- Left and right controls -->
@@ -44,6 +53,8 @@
     </a>
 </div>
 
+<br>
+
 <div class="container pt-3">
     <div class="row">
 
@@ -51,7 +62,7 @@
     </div>
 
     <div class="col-sm-6">
-    <h3 style="margin-top:5px">Create an account it's super easy !!</h3>  
+    <h3 style="margin-top:5px">Create an account it's super easy !!</h3>
     </div>
 
     <div class="col-sm-4">
