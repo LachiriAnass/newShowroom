@@ -20,6 +20,26 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
+    
+    <style media="screen">
+      .carousel-inner img {
+      margin-left: 50px;
+      margin-right: 50px;
+      width: 1230px;
+      height: 600px;
+    }
+
+    .headers {
+      color:black;
+      font-size: 70px;
+    }
+
+    .para {
+      color: black;
+      font-size: 30px;
+      font-weight: bold;
+    }
+    </style>
 </head>
 <body>
 <div id="app">
