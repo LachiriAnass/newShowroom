@@ -9,6 +9,33 @@
             <div class="profile-content">
                 <h1>{{$user->name}}</h1>
             </div>
+            <div class="row" style="padding-bottom: 20px;">
+                                <div class="col-md-3"></div>
+                                <div class="col-md-3 text-center">
+                                    <a class="btn btn-primary" style="width:100%;" href="#"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('profile-upvote-form').submit();">
+                                                     <i class="fas fa-angle-double-up"></i> {{ count($upvotes) }}
+                                    </a>
+
+                                    <form id="profile-upvote-form" action="/profileupvote/{{ Auth::user()->id }}/{{ $user->id }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <a class="btn btn-primary" style="width:100%;" href="#"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('profile-downvote-form').submit();">
+                                                     <i class="fas fa-angle-double-down"></i> {{ count($downvotes) }}
+                                    </a>
+
+                                    <form id="profile-downvote-form" action="/profiledownvote/{{ Auth::user()->id }}/{{ $user->id }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
+                                <div class="col-md-3"></div>
+                            </div>
             <hr>
             <h3 class="text-left margin-left-40">Artist's galleries</h3><br>
             <div class="row">
@@ -29,6 +56,8 @@
                 @endforelse
             </div>
         </div>
+
+
     </div>
 </div>
 

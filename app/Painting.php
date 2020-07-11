@@ -12,4 +12,9 @@ class Painting extends Model
     {
         return $this->belongsTo('App\Gallery');
     }
+
+    public function paintingvotes()
+    {
+        return $this->hasMany('App\PaintingVote');
+    }
 }

@@ -7,7 +7,36 @@
             <div class="card">
                 <div class="card-header text-center">Title : {{ $painting->title }}</div>
                 <img src="/storage/public/painting/{{ $painting->image }}" class="card-img-top" alt="{{ $painting->title }}">
+
+
                 <div class="card-body">
+                            <div class="row" style="padding-bottom: 20px;">
+                                <div class="col-md-6 text-center">
+                                    <a class="btn btn-primary" style="width:100%;" href="#"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('painting-upvote-form').submit();">
+                                                     <i class="fas fa-angle-double-up"></i> {{ count($upvotes) }}
+                                    </a>
+
+                                    <form id="painting-upvote-form" action="/paintingupvote/{{ Auth::user()->id }}/{{ $painting->id }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+
+                                </div>
+                                <div class="col-md-6 text-center">
+                                    <a class="btn btn-primary" style="width:100%;" href="#"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('painting-downvote-form').submit();">
+                                                     <i class="fas fa-angle-double-down"></i> {{ count($downvotes) }}
+                                    </a>
+
+                                    <form id="painting-downvote-form" action="/paintingdownvote/{{ Auth::user()->id }}/{{ $painting->id }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </div>
+
+
                     <h5 class="card-title">Gallery name : </h5>
                     <a href="/gallery/{{$painting->gallery->id}}" class="painting-text">{{ $painting->gallery->title }}</a><br><br>
                     <h5 class="card-title">Description</h5>

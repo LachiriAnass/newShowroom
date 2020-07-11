@@ -12,7 +12,16 @@ class PaintingController extends Controller
     {
         $painting = Painting::findOrFail($id);
         //$painting['gallery'] = $painting->gallery;
-        return view('painting', ['painting' => $painting]);
+
+        $upvotes = $painting->paintingvotes->filter(function($item){
+            return $item->vote_type == true;
+        });
+
+        $downvotes = $painting->paintingvotes->filter(function($item){
+            return $item->vote_type == false;
+        });
+
+        return view('painting', ['painting' => $painting, 'upvotes' => $upvotes, 'downvotes' => $downvotes]);
     }
 
 

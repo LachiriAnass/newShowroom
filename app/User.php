@@ -44,4 +44,14 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\GalleryVote');
     }
+
+    public function paintingvotes()
+    {
+        return $this->hasMany('App\PaintingVote');
+    }
+
+    public function profilevotes()  // the columns in common is id(users) and user_id(profile_votes)  !!!!!!!!not profile_id(profile_votes)!!!!!!!!
+    {
+        return $this->hasMany('App\ProfileVote');
+    }
 }

@@ -40,3 +40,11 @@ Route::get('/explore', 'ExploreController@index');
 
 Route::post('/galleryupvote/{user_id}/{gallery_id}', 'GalleryVoteController@manageUpvote')->middleware('auth');
 Route::post('/gallerydownvote/{user_id}/{gallery_id}', 'GalleryVoteController@manageDownvote')->middleware('auth');
+
+Route::post('/paintingupvote/{user_id}/{painting_id}', 'PaintingVoteController@manageUpvote')->middleware('auth');
+Route::post('/paintingdownvote/{user_id}/{painting_id}', 'PaintingVoteController@manageDownvote')->middleware('auth');
+
+Route::post('/profileupvote/{user_id}/{profile_id}', 'ProfileVoteController@manageUpvote')->middleware('auth');
+Route::post('/profiledownvote/{user_id}/{profile_id}', 'ProfileVoteController@manageDownvote')->middleware('auth');
+
+

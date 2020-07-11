@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Gallery;
+use App\ProfileVote;
 
 class ProfileController extends Controller
 {
@@ -12,7 +13,18 @@ class ProfileController extends Controller
     {
         $user = User::findOrFail($id);
         $galleries = Gallery::where('user_id', $id)->get();
-        return view('profile', ['user' => $user, 'galleries' => $galleries]);
+
+        $votes = ProfileVote::where('profile_id', '=', $id)->get();
+
+        $upvotes = $votes->filter(function($item){
+            return $item->vote_type == true;
+        });
+
+        $downvotes = $votes->filter(function($item){
+            return $item->vote_type == false;
+        });
+
+        return view('profile', ['user' => $user, 'galleries' => $galleries, 'upvotes' => $upvotes, 'downvotes' => $downvotes]);
     }
 
     public function update($id, Request $request)
