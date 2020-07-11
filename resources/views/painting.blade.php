@@ -10,6 +10,8 @@
 
 
                 <div class="card-body">
+
+                            @auth
                             <div class="row" style="padding-bottom: 20px;">
                                 <div class="col-md-6 text-center">
                                     <a class="btn btn-primary" style="width:100%;" href="#"
@@ -35,6 +37,8 @@
                                     </form>
                                 </div>
                             </div>
+
+                            @endauth
 
 
                     <h5 class="card-title">Gallery name : </h5>

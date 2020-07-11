@@ -9,7 +9,10 @@
             <div class="profile-content">
                 <h1>{{$user->name}}</h1>
             </div>
-            <div class="row" style="padding-bottom: 20px;">
+
+                            @auth
+                            @if(Auth::user()->id != $user->id)
+                            <div class="row" style="padding-bottom: 20px;">
                                 <div class="col-md-3"></div>
                                 <div class="col-md-3 text-center">
                                     <a class="btn btn-primary" style="width:100%;" href="#"
@@ -36,6 +39,8 @@
                                 </div>
                                 <div class="col-md-3"></div>
                             </div>
+                            @endif
+                            @endauth
             <hr>
             <h3 class="text-left margin-left-40">Artist's galleries</h3><br>
             <div class="row">

@@ -20,6 +20,9 @@
                     <div class="row">
                         <div class="col-md-4">
                             <img src="/storage/public/gallery/{{ $gallery->image }}" class="card-img-top" alt="...">
+
+                            @auth
+
                             <div class="row gallery-votes">
                                 <div class="col-md-6 text-center">
                                     <a class="btn btn-primary" style="width:100%;" href="#"
@@ -45,6 +48,9 @@
                                     </form>
                                 </div>
                             </div>
+
+                            @endauth
+
                         </div>
                         <div class="col-md-8">
                             <h4>Title : </h4>
