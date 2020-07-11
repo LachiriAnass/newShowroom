@@ -20,6 +20,31 @@
                     <div class="row">
                         <div class="col-md-4">
                             <img src="/storage/public/gallery/{{ $gallery->image }}" class="card-img-top" alt="...">
+                            <div class="row gallery-votes">
+                                <div class="col-md-6 text-center">
+                                    <a class="btn btn-primary" style="width:100%;" href="#"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('gallery-upvote-form').submit();">
+                                                     <i class="fas fa-angle-double-up"></i> {{ count($upvotes) }}
+                                    </a>
+
+                                    <form id="gallery-upvote-form" action="/galleryupvote/{{ Auth::user()->id }}/{{ $gallery->id }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+
+                                </div>
+                                <div class="col-md-6 text-center">
+                                    <a class="btn btn-primary" style="width:100%;" href="#"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('gallery-downvote-form').submit();">
+                                                     <i class="fas fa-angle-double-down"></i> {{ count($downvotes) }}
+                                    </a>
+
+                                    <form id="gallery-downvote-form" action="/gallerydownvote/{{ Auth::user()->id }}/{{ $gallery->id }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-md-8">
                             <h4>Title : </h4>

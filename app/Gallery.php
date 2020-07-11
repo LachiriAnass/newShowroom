@@ -13,6 +13,11 @@ class Gallery extends Model
         return $this->hasMany('App\Painting');
     }
 
+    public function galleryvotes()
+    {
+        return $this->hasMany('App\GalleryVote');
+    }
+
     public function user()
     {
         return $this->belongsTo('App\User');

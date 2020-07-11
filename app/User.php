@@ -39,4 +39,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Gallery');
     }
+
+    public function galleryvotes()
+    {
+        return $this->hasMany('App\GalleryVote');
+    }
 }

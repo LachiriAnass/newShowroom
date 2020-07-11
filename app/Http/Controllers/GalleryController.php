@@ -23,8 +23,15 @@ class GalleryController extends Controller
     public function show($id)
     {
         $gallery = Gallery::findOrFail($id);
+        $upvotes = $gallery->galleryvotes->filter(function($item){
+            return $item->vote_type == true;
+        });
+
+        $downvotes = $gallery->galleryvotes->filter(function($item){
+            return $item->vote_type == false;
+        });
         $paintings = $gallery->paintings;
-        return view('gallery', ['gallery' => $gallery, 'paintings' => $paintings]);
+        return view('gallery', ['gallery' => $gallery, 'paintings' => $paintings, 'upvotes' => $upvotes, 'downvotes' => $downvotes]);
     }
 
     public function store(Request $request)

@@ -37,3 +37,6 @@ Route::post('/modify_profile/{user_id}', 'ProfileController@update')->middleware
 Route::get('/search', 'SearchController@index');
 
 Route::get('/explore', 'ExploreController@index');
+
+Route::post('/galleryupvote/{user_id}/{gallery_id}', 'GalleryVoteController@manageUpvote')->middleware('auth');
+Route::post('/gallerydownvote/{user_id}/{gallery_id}', 'GalleryVoteController@manageDownvote')->middleware('auth');
