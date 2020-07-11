@@ -87,7 +87,7 @@
 <br><br>
 @auth
 @if(Auth::user()->id == $gallery->user_id)
-<div class="container">
+<div class="container margin-bottom-40">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">

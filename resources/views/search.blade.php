@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container margin-top-50 margin-bottom-40">
     <h2 class="text-center">Category : {{ $category }} - Search Text : {{ $search_text }}</h2><br><br>
 
         @if($category == 'all')

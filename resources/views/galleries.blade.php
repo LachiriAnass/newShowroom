@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container margin-top-50">
     <h1 class="text-center">My Galleries</h1><br><br>
     <div class="row">
         @forelse($galleries as $gallery)

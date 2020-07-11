@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container margin-top-50">
     <h1 class="text-center">Explore Art</h1><br><br>
     <h3 class="text-center">The latest galleries</h3>
     <div class="row">
