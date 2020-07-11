@@ -46,9 +46,9 @@
                     @auth
                     @if(Auth::user()->id == $painting->gallery->user_id)
 
-                    <a href="/painting/{{$painting->id}}" class="btn btn-delete float-right" style="margin-right: 20px;margin-left: 20px;"
-                            onclick="event.preventDefault();
-                                                     document.getElementById('painting-delete-form').submit();">Delete</a>
+                    <a href="/painting/{{$painting->id}}"  class="btn btn-delete float-right" style="margin-right: 20px;margin-left: 20px;"
+                            onclick="if(confirm('Are you sure?')){event.preventDefault();
+                                                     document.getElementById('painting-delete-form').submit();}">Delete</a>
                     <form id="painting-delete-form" action="/delete_painting/{{ $painting->id }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>

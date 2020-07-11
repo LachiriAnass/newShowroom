@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Painting;
+use App\PaintingVote;
 
 class PaintingController extends Controller
 {
@@ -60,6 +61,7 @@ class PaintingController extends Controller
 
         $painting = Painting::findOrFail($id);
         $red = "gallery/$painting->gallery_id";
+        PaintingVote::where('painting_id', '=', $id)->delete();
         $painting->delete();
 
         return redirect($red);
