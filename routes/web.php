@@ -30,6 +30,7 @@ Route::post('/create_gallery', 'GalleryController@store')->middleware('auth');
 Route::get('/painting/{painting_id}', 'PaintingController@show');
 Route::post('/create_painting', 'PaintingController@store')->middleware('auth');
 Route::post('/delete_painting/{painting_id}', 'PaintingController@destroy')->middleware('auth');
+Route::post('/sold_painting/{painting_id}', 'PaintingController@modify')->middleware('auth');
 
 Route::get('/profile/{user_id}', 'ProfileController@show');
 Route::post('/modify_profile/{user_id}', 'ProfileController@update')->middleware('auth');

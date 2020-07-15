@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Painting;
 use App\PaintingVote;
 
@@ -32,7 +33,8 @@ class PaintingController extends Controller
             'title' => 'required',
             'description' => 'required',
             'image' => 'image',
-            'gallery_id' => 'required'
+            'gallery_id' => 'required',
+            'for_sale' => 'required'
         ]);
 
         $painting = new Painting();
@@ -50,6 +52,12 @@ class PaintingController extends Controller
         $painting->title = request('title');
         $painting->description = request('description');
         $painting->gallery_id = request('gallery_id');
+        if(request('for_sale')=='true'){
+            $painting->for_sale = true;
+            $painting->price = request('price');
+        }else{
+            $painting->for_sale = false;
+        }
         $painting->save();
 
         return back()
@@ -65,5 +73,17 @@ class PaintingController extends Controller
         $painting->delete();
 
         return redirect($red);
+    }
+
+    public function modify($id)
+    {
+        $painting = Painting::findOrFail($id);
+
+        if($painting->gallery->user->id == Auth::user()->id){
+            $painting->for_sale = false;
+            $painting->save();
+        }
+
+        return back();
     }
 }
