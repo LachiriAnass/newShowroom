@@ -18,6 +18,7 @@ class CreateGalleriesTable extends Migration
             $table->string('title');
             $table->text('description');
             $table->string('image');
+            $table->bigInteger('votes_average');
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
 

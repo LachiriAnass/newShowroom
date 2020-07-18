@@ -55,6 +55,7 @@ class GalleryController extends Controller
         }
 
         $gallery->title = request('title');
+        $gallery->votes_average = 0;
         $gallery->description = request('description');
         $gallery->user_id = Auth::id();
         $gallery->save();

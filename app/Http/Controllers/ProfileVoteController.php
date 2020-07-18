@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\ProfileVote;
+use App\User;
 
 class ProfileVoteController extends Controller
 {
@@ -14,15 +15,21 @@ class ProfileVoteController extends Controller
             return back();
         }
 
+        $profile = User::findOrFail($profile_id);
+
         $profilevote = ProfileVote::where('user_id', '=', $user_id)->where('profile_id', '=', $profile_id)->first();
 
         if($profilevote){
             if($profilevote->vote_type){
                 $profilevote->delete();
+                $profile->votes_average -= 1;
+                $profile->save();
                 return back();
             }else{
                 $profilevote->vote_type = true;
                 $profilevote->save();
+                $profile->votes_average += 2;
+                $profile->save();
                 return back();
             }
         }
@@ -32,6 +39,8 @@ class ProfileVoteController extends Controller
         $profileupvote->user_id = $user_id;
         $profileupvote->profile_id = $profile_id;
         $profileupvote->save();
+        $profile->votes_average += 1;
+        $profile->save();
         return back();
 
     }
@@ -42,15 +51,22 @@ class ProfileVoteController extends Controller
             return back();
         }
 
+
+        $profile = User::findOrFail($profile_id);
+
         $profilevote = ProfileVote::where('user_id', '=', $user_id)->where('profile_id', '=', $profile_id)->first();
 
         if($profilevote){
             if(!$profilevote->vote_type){
                 $profilevote->delete();
+                $profile->votes_average += 1;
+                $profile->save();
                 return back();
             }else{
                 $profilevote->vote_type = false;
                 $profilevote->save();
+                $profile->votes_average -= 2;
+                $profile->save();
                 return back();
             }
         }
@@ -60,6 +76,8 @@ class ProfileVoteController extends Controller
         $profileupvote->user_id = $user_id;
         $profileupvote->profile_id = $profile_id;
         $profileupvote->save();
+        $profile->votes_average -= 1;
+        $profile->save();
         return back();
 
     }

@@ -58,6 +58,7 @@ class PaintingController extends Controller
         }else{
             $painting->for_sale = false;
         }
+        $painting->votes_average = 0;
         $painting->save();
 
         return back()
