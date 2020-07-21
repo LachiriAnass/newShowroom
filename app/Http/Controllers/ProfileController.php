@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Gallery;
 use App\ProfileVote;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class ProfileController extends Controller
 {
@@ -55,4 +57,47 @@ class ProfileController extends Controller
         return back()
             ->with("success","You have successfully modified your profile's infos.");
     }
+
+
+    public function register(Request $request)
+    {
+
+        $this->validate($request, [
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|string|max:255|unique:users',
+            'password' => 'required|string|min:8',
+        ]);
+
+
+        $user = new User();
+        $user->name = request('name');
+        $user->email = request('email');
+        $user->password = Hash::make(request('password'));
+        $user->votes_average = 0;
+        $user->login_token = Str::random(60);
+        $user->save();
+
+        return response()->json(['status' => 'good','user' => $user]);
+
+    }
+
+    public function login(Request $request)
+    {
+
+        $this->validate($request, [
+            'email' => 'required|email|string|max:255',
+            'password' => 'required',
+        ]);
+
+        $user = User::where('email', request('email'))->first();
+        if(Hash::check(request('password'), $user->password)){
+            $user->login_token = Str::random(60);
+            $user->save();
+            return response()->json(['status' => 'good','user' => $user]);
+        }
+
+        return response()->json(['status' => 'bad']);
+
+    }
+
 }

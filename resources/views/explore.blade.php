@@ -16,8 +16,8 @@
             </div>
         </div>
         @empty
-        <div class="alert alert-primary text-center" role="alert" style="width:100%;margin-top: 50px;">
-            You don't have any galleries yet!! Click the "New Gallery" to add a new one.
+        <div class="alert alert-primary text-center" role="alert" style="width:100%;margin-bottom: 50px;">
+            No Galleries Found !!
         </div>
         @endforelse
     </div>
@@ -36,8 +36,8 @@
             </div>
         </div>
         @empty
-        <div class="alert alert-primary text-center" role="alert" style="width:100%;margin-top: 50px;">
-            You don't have any galleries yet!! Click the "New Gallery" to add a new one.
+        <div class="alert alert-primary text-center" role="alert" style="width:100%;margin-bottom: 50px;">
+            No Galleries Found !!
         </div>
         @endforelse
     </div>
@@ -56,8 +56,8 @@
             </div>
         </div>
         @empty
-        <div class="alert alert-primary text-center" role="alert" style="width:100%;">
-            You don't have any painting yet!! Fill and submit the form below to add a new one.
+        <div class="alert alert-primary text-center" role="alert" style="width:100%;margin-bottom: 50px;">
+            No Paintings Found !!
         </div>
         @endforelse
     </div>
@@ -76,7 +76,7 @@
             </div>
         </div>
         @empty
-        <div class="alert alert-primary text-center" role="alert" style="width:100%;margin-top: 50px;">
+        <div class="alert alert-primary text-center" role="alert" style="width:100%;margin-bottom: 50px;">
             No Artists Found !!
         </div>
         @endforelse

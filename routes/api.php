@@ -2,6 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Gallery;
+use App\User;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +17,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+
+
+Route::get('test/{id}', function ($id){
+    $gallery = Gallery::findOrFail($id);
+    $user = User::findOrFail($id);
+    return response()->json(['gallery' => $gallery,'user' => $user], 200);
 });
+
+Route::get('/example', function(){
+	return response()->json(['status' => 'Good']);
+});
+	
+Route::post('/register', 'ProfileController@register');
+Route::post('/login', 'ProfileController@login');
