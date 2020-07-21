@@ -46,7 +46,7 @@ class ProfileController extends Controller
             $extension = $request->file('image')->getClientOriginalExtension();
             $filename = preg_replace('/\s+/', '', $filename);
             $fileNameToStore = $filename .'_'.time().'.'.$extension;
-            $path = $request->file('image')->storeAs('public/gallery', $fileNameToStore);
+            $path = $request->file('image')->storeAs('public/profile', $fileNameToStore);
             $user->image = $fileNameToStore;
         }
 
