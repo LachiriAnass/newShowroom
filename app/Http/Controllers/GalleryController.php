@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Gallery;
 use App\Painting;
+use App\User;
 
 class GalleryController extends Controller
 {
@@ -32,6 +33,20 @@ class GalleryController extends Controller
         });
         $paintings = $gallery->paintings;
         return view('gallery', ['gallery' => $gallery, 'paintings' => $paintings, 'upvotes' => $upvotes, 'downvotes' => $downvotes]);
+    }
+
+    public function api_show($id)
+    {
+        $gallery = Gallery::findOrFail($id);
+        $paintings = $gallery->paintings;
+        return response()->json(['status' => 'good', 'gallery' => $gallery, 'paintings' => $paintings]);
+    }
+
+    public function api_show_user_galleries($id)
+    {
+        $user = User::findOrFail($id);
+        $galleries = $user->galleries;
+        return response()->json(['status' => 'good', 'galleries' => $galleries]);
     }
 
     public function store(Request $request)

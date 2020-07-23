@@ -28,6 +28,14 @@ Route::get('test/{id}', function ($id){
 Route::get('/example', function(){
 	return response()->json(['status' => 'Good']);
 });
-	
+
 Route::post('/register', 'ProfileController@register');
 Route::post('/login', 'ProfileController@login');
+
+Route::get('/explore', 'ExploreController@api_index');
+
+Route::get('/painting/{painting_id}', 'PaintingController@api_show');
+
+Route::get('/gallery/{gallery_id}', 'GalleryController@api_show');
+
+Route::get('/user_galleries/{user_id}', 'GalleryController@api_show_user_galleries');

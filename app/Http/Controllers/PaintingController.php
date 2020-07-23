@@ -26,6 +26,14 @@ class PaintingController extends Controller
         return view('painting', ['painting' => $painting, 'upvotes' => $upvotes, 'downvotes' => $downvotes]);
     }
 
+    public function api_show($id)
+    {
+        $painting = Painting::findOrFail($id);
+        //$painting['gallery'] = $painting->gallery;
+
+        return response()->json(['status' => 'good', 'painting' => $painting]);
+    }
+
 
     public function store(Request $request)
     {
