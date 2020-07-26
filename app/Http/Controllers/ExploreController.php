@@ -23,10 +23,16 @@ class ExploreController extends Controller
     }
 
 
+
+    //   APIS FUNCTIONS
+
+
     public function api_index()
     {
         $latest_galleries = Gallery::orderBy('created_at', 'DESC')->limit(6)->get();
         $most_rated_galleries = Gallery::orderBy('votes_average', 'DESC')->limit(6)->get();
         return response()->json(['status' => 'good','latest_galleries' => $latest_galleries, 'most_rated_galleries' => $most_rated_galleries]);
     }
+
+
 }

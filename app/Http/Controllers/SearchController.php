@@ -19,9 +19,10 @@ class SearchController extends Controller
         $category = request('category');
         $search_text = request('search_text');
 
-        $galleries = Gallery::where('title', 'LIKE', '%'.$search_text.'%')->get();
-        $paintings = Painting::where('title', 'LIKE', '%'.$search_text.'%')->get();
-        $artists = User::where('name', 'LIKE', '%'.$search_text.'%')->get();
+        $galleries = Gallery::where('title', 'LIKE', '%'.$search_text.'%')->paginate(15);
+        $paintings = Painting::where('title', 'LIKE', '%'.$search_text.'%')->paginate(15);
+        $artists = User::where('name', 'LIKE', '%'.$search_text.'%')->paginate(15);
+
 
 
         return view('search', ['category' => $category,
@@ -29,5 +30,22 @@ class SearchController extends Controller
                                 'galleries' => $galleries,
                                 'paintings' => $paintings,
                                 'artists' => $artists]);
+    }
+
+    public function api_index(Request $request)
+    {
+        $this->validate($request, [
+            'search_text' => 'required'
+        ]);
+
+        $search_text = request('search_text');
+
+        if(request('search_text') == ""){
+            return response()->json(['status' => 'bad','error' => 'Search Text Empty !!']);
+        }else{
+            $galleries = Gallery::where('title', 'LIKE', '%'.$search_text.'%')->limit(10)->get();
+            $paintings = Painting::where('title', 'LIKE', '%'.$search_text.'%')->limit(10)->get();
+            return response()->json(['status' => 'good','galleries' => $galleries, 'paintings' => $paintings]);
+        }
     }
 }

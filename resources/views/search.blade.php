@@ -94,6 +94,11 @@
                     No Paintings Found !!
                 </div>
                 @endforelse
+
+
+            </div>
+            <div class="row">
+                <div style="margin:auto;margin-top: 30px; margin-bottom: 30px;">{{ $paintings->withQueryString()->links() }}</div>
             </div>
         @elseif($category == 'gallery')
             <div class="row">
@@ -113,6 +118,9 @@
                 </div>
                 @endforelse
             </div>
+            <div class="row">
+                <div style="margin:auto;margin-top: 30px; margin-bottom: 30px;">{{ $galleries->withQueryString()->links() }}</div>
+            </div>
 
         @elseif($category == 'artist')
             <div class="row">
@@ -131,6 +139,9 @@
                     No Artists Found !!
                 </div>
                 @endforelse
+            </div>
+            <div class="row">
+                <div style="margin:auto;margin-top: 30px; margin-bottom: 30px;">{{ $artists->withQueryString()->links() }}</div>
             </div>
         @endif
 </div>

@@ -17,7 +17,7 @@ class CreatePaintingsTable extends Migration
             $table->id();
             $table->string('title');
             $table->text('description');
-            $table->string('image')->nullable();
+            $table->string('image');
             $table->unsignedBigInteger('gallery_id');
             $table->boolean('for_sale');
             $table->string('price')->nullable();
