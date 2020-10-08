@@ -18,16 +18,11 @@ class CreatePaintingsTable extends Migration
             $table->string('title');
             $table->text('description');
             $table->string('image');
-            $table->unsignedBigInteger('gallery_id');
             $table->boolean('for_sale');
             $table->string('price')->nullable();
             $table->bigInteger('votes_average');
             $table->timestamps();
 
-            $table->foreign('gallery_id')
-                ->references('id')
-                ->on('galleries')
-                ->onDelete('cascade');
         });
     }
 

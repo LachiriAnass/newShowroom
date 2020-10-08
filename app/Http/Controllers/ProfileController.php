@@ -4,17 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
-use App\Gallery;
 use App\ProfileVote;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use App\Painting;
 
 class ProfileController extends Controller
 {
     public function show($id)
     {
         $user = User::findOrFail($id);
-        $galleries = Gallery::where('user_id', $id)->get();
+        $paintings = Painting::where('user_id', $id)->get();
 
         $votes = ProfileVote::where('profile_id', '=', $id)->get();
 
@@ -26,7 +26,7 @@ class ProfileController extends Controller
             return $item->vote_type == false;
         });
 
-        return view('profile', ['user' => $user, 'galleries' => $galleries, 'upvotes' => $upvotes, 'downvotes' => $downvotes]);
+        return view('profile', ['user' => $user, 'paintings' => $paintings, 'upvotes' => $upvotes, 'downvotes' => $downvotes]);
     }
 
     public function update($id, Request $request)

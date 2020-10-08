@@ -8,13 +8,13 @@ class Painting extends Model
 {
     protected $guarded = [];
 
-    public function gallery()
-    {
-        return $this->belongsTo('App\Gallery');
-    }
-
     public function paintingvotes()
     {
         return $this->hasMany('App\PaintingVote');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
     }
 }

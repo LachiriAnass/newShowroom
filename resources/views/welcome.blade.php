@@ -1,76 +1,45 @@
-@extends('layouts.app')
+@extends('layouts.welcome_layout')
 
 @section('content')
 
 
-<div id="demo" class="carousel slide" data-ride="carousel">
-<ul class="carousel-indicators">
-  <li data-target="#demo" data-slide-to="0" class="active"></li>
-  <li data-target="#demo" data-slide-to="1"></li>
-  <li data-target="#demo" data-slide-to="2"></li>
-</ul>
-
-<!-- The slideshow -->
-<div class="carousel-inner">
-<div class="carousel-item active">
-    <div class="carousel-img" style="background-image: url('imgs/paintings.jpg');">
-        <div class="blackish"></div>
-    </div>
-    <div class="carousel-caption">
-      <h1 class="headers">Discover</h1>
-      <p class="para">Discover new paintings</p>
-    </div>
-  </div>
-
-  <div class="carousel-item">
-    <div class="carousel-img" style="background-image: url('imgs/paint.png');">
-        <div class="blackish"></div>
-    </div>
-    <div class="carousel-caption">
-      <h1 class="headers">Upvote</h1>
-      <p class="para">Upvote your favorite artists</p>
-    </div>
-  </div>
-
-  <div class="carousel-item">
-    <div class="carousel-img" style="background-image: url('imgs/coast-painting.jpg');">
-        <div class="blackish"></div>
-    </div>
-    <div class="carousel-caption">
-      <h1 class="headers">Upload</h1>
-      <p class="para">Upload your own paintings</p>
-    </div>
-  </div>
-
-</div>
-
-<!-- Left and right controls -->
-    <a class="carousel-control-prev" href="#demo" data-slide="prev">
-    <span class="carousel-control-prev-icon"></span>
-    </a>
-    <a class="carousel-control-next" href="#demo" data-slide="next">
-    <span class="carousel-control-next-icon"></span>
-    </a>
-</div>
-
-<br>
-
-<div class="container pt-3">
-    <div class="row">
-
-    <div class="col-sm-2">
+<div id="fullpage">
+      <section class="section s1">
+        <h1>Showcase</h1>
+        <div class="description">
+        <p>Sell and showcase your paintings </p>
+        <button type="button" class="welcome-buttons">Get started</button>
+        </div>
+        <img src="imgs/paintings1.jpg" class="paintings s1" />
+      </section>
+      <section class="section s2">
+        <h1>Discover</h1>
+        <div class="description">
+        <p>Discover new paintings to buy</p>
+        <button type="button" class="welcome-buttons">Explore</button>
+        </div>
+        <img src="imgs/paintings2.jpg" class="paintings s2" />
+      </section>
+      <section class="section s3">
+        <h1>Upvote</h1>
+        <div class="description">
+        <p>Upvote your favorite paintings</p>
+      </div>
+        <img src="imgs/upvote.png" class="paintings s3" />
+      </section>
     </div>
 
-    <div class="col-sm-6">
-    <h3 style="margin-top:5px">Create an account it's super easy !!</h3>
-    </div>
-
-    <div class="col-sm-4">
-        <a href="/register" class="btn btn-success btn-lg" role="button">Sign up</a>
-     </div>
-    </div>
-</div>
-
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TimelineMax.min.js"
+      integrity="sha256-fIkQKQryItPqpaWZbtwG25Jp2p5ujqo/NwJrfqAB+Qk="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"
+      integrity="sha256-lPE3wjN2a7ABWHbGz7+MKBJaykyzqCbU96BJWjio86U="
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/fullpage.min.js"></script>
 @endsection
 
 

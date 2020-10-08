@@ -19,7 +19,6 @@ class PaintingSeeder extends Seeder
                     'title' => $faker->sentence,
                     'description' => $faker->paragraph,
                     'image' => 'default.jpg',
-                    'gallery_id' => $faker->numberBetween($min = 1, $max = 20),
                     'for_sale' => $faker->boolean,
                     'price' => strval($faker->randomFloat($nbMaxDecimals = 2, $min = 10, $max = 10000)),
                     'votes_average' => 0,

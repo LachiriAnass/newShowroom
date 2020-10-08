@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Gallery;
+use App\Painting;
 use App\User;
 
 
@@ -20,9 +20,9 @@ use App\User;
 
 
 Route::get('test/{id}', function ($id){
-    $gallery = Gallery::findOrFail($id);
+    $painting = Painting::findOrFail($id);
     $user = User::findOrFail($id);
-    return response()->json(['gallery' => $gallery,'user' => $user], 200);
+    return response()->json(['painting' => $painting,'user' => $user], 200);
 });
 
 Route::get('/example', function(){
@@ -36,15 +36,11 @@ Route::get('/explore', 'ExploreController@api_index');
 
 Route::get('/painting/{painting_id}', 'PaintingController@api_show');
 
-Route::get('/gallery/{gallery_id}', 'GalleryController@api_show');
 
-Route::get('/user_galleries/{user_id}', 'GalleryController@api_show_user_galleries');
 
 Route::get('/search', 'SearchController@api_index');
 
 Route::post('/editprofile/{user_id}', 'ProfileController@api_update');
-
-Route::post('/newgallery/{user_id}', 'GalleryController@api_store');
 
 Route::post('/newpainting/{user_id}', 'PaintingController@api_store');
 

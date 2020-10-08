@@ -20,22 +20,10 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+
 
 
 <style>
-
-
-	html {
-    position: relative;
-    min-height: 100%;
-	}
-
-	body {
-	    margin: 0 0 150px;
-	    /* bottom = footer height */
-	    padding: 25px;
-	}
 
     h5 {
     	color: #ff5b3f;
@@ -47,12 +35,6 @@
     .footer-top {
     	background : #111;
     	padding: 50px 0;
-    	position: absolute;
-    	left: 0;
-    	bottom: 0;
-    	height: 150px;
-    	width: 100%;
-    	overflow: hidden;
     }
 
 
@@ -77,12 +59,11 @@
         font-size: 25px; 
     }
 
+
     .header-links {
         font-size: 14px;
         text-transform: uppercase;
     }
-
-
 
     
 
@@ -112,19 +93,14 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
 
-                <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                -->
+                
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-                        <a href="/explore" class="nav-link header-links">Explore</a>
-                    </ul>
 
-
-                    <a class="navbar-brand" href="{{ url('/') }}">
+                	<a class="navbar-brand" href="{{ url('/') }}">
                     <img src="/imgs/paint.png" alt="Showroom" class="showroom-icon">
                      <span id="site-title">Showroom</span>
                     </a>
@@ -132,7 +108,7 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto " style="padding-right:20px;">
                         <!-- Authentication Links -->
-                            <!-- <form class="form-inline search-bar" action="/search" method="GET">
+                            <form class="form-inline search-bar" action="/search" method="GET">
                                 <select name="category" class="category-filter custom-select">
                                     <option value="all">All</option>
                                     <option value="gallery">Gallery</option>
@@ -147,7 +123,7 @@
                                 </svg>
                                 </button>
                             </form>
-                        -->
+                        
                             @auth
                             <a href="/create_painting" class="btn btn-primary new_painting">Upload</a>
                             @endauth
@@ -168,7 +144,7 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a href="/profile/{{ Auth::user()->id }}" class="dropdown-item header-links">My Profile</a>
-                                <a href="/galleries" class="dropdown-item header-links">My Paintings</a>
+                                <a href="/galleries" class="dropdown-item header-links">My Galleries</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -225,3 +201,8 @@
 
 </body>
 </html>
+
+
+
+
+

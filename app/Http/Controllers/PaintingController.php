@@ -5,16 +5,24 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Painting;
-use App\PaintingVote;
+use App\User;
 
 class PaintingController extends Controller
 {
+    public function newPainting()
+    {
+        return view('new_painting');
+    }
+
+    public function index()
+    {
+        $paintings = Painting::where('user_id', Auth::id())->get();
+        return view('paintings', ['paintings' => $paintings]);
+    }
 
     public function show($id)
     {
         $painting = Painting::findOrFail($id);
-        //$painting['gallery'] = $painting->gallery;
-
         $upvotes = $painting->paintingvotes->filter(function($item){
             return $item->vote_type == true;
         });
@@ -23,17 +31,18 @@ class PaintingController extends Controller
             return $item->vote_type == false;
         });
 
+
         return view('painting', ['painting' => $painting, 'upvotes' => $upvotes, 'downvotes' => $downvotes]);
     }
 
 
+  
     public function store(Request $request)
     {
         $this->validate($request, [
             'title' => 'required',
             'description' => 'required',
             'image' => 'image',
-            'gallery_id' => 'required',
             'for_sale' => 'required'
         ]);
 
@@ -51,7 +60,6 @@ class PaintingController extends Controller
 
         $painting->title = request('title');
         $painting->description = request('description');
-        $painting->gallery_id = request('gallery_id');
         if(request('for_sale')=='true'){
             $painting->for_sale = true;
             $painting->price = request('price');
@@ -62,14 +70,13 @@ class PaintingController extends Controller
         $painting->save();
 
         return back()
-            ->with('success','You have successfully created a gallery.');
+            ->with('success','You have successfully uploaded a painting.');
     }
 
     public function destroy($id)
     {
 
         $painting = Painting::findOrFail($id);
-        $red = "gallery/$painting->gallery_id";
         PaintingVote::where('painting_id', '=', $id)->delete();
         $painting->delete();
 
@@ -80,7 +87,7 @@ class PaintingController extends Controller
     {
         $painting = Painting::findOrFail($id);
 
-        if($painting->gallery->user->id == Auth::user()->id){
+        if($paintinguser->id == Auth::user()->id){
             $painting->for_sale = false;
             $painting->save();
         }
@@ -95,7 +102,6 @@ class PaintingController extends Controller
     public function api_show($id)
     {
         $painting = Painting::findOrFail($id);
-        //$painting['gallery'] = $painting->gallery;
 
         return response()->json(['status' => 'good', 'painting' => $painting]);
     }
@@ -106,7 +112,6 @@ class PaintingController extends Controller
             'title' => 'required',
             'description' => 'required',
             'image' => 'image',
-            'gallery_id' => 'required',
             'for_sale' => 'required',
             'login_token' => 'required'
         ]);
@@ -134,7 +139,6 @@ class PaintingController extends Controller
 
         $painting->title = request('title');
         $painting->description = request('description');
-        $painting->gallery_id = request('gallery_id');
         if(request('for_sale')=='true'){
             $painting->for_sale = true;
             $painting->price = request('price');
@@ -146,6 +150,5 @@ class PaintingController extends Controller
 
         return response()->json(['status' => 'good', 'painting' => $painting]);
     }
-
 
 }

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Gallery;
 use App\Painting;
 use App\User;
 
@@ -12,12 +11,10 @@ class ExploreController extends Controller
 {
     public function index()
     {
-        $latest_galleries = Gallery::orderBy('created_at', 'DESC')->limit(6)->get();
-        $most_rated_galleries = Gallery::orderBy('votes_average', 'DESC')->limit(6)->get();
+        $latest_paintings = Painting::orderBy('created_at', 'DESC')->limit(6)->get();
         $most_rated_paintings = Painting::orderBy('votes_average', 'DESC')->limit(6)->get();
         $most_rated_artists = User::orderBy('votes_average', 'DESC')->limit(6)->get();
-        return view('explore', ['latest_galleries' => $latest_galleries,
-                                'most_rated_galleries' => $most_rated_galleries,
+        return view('explore', ['latest_paintings' => $latest_paintings,
                                 'most_rated_paintings' => $most_rated_paintings,
                                 'most_rated_artists' => $most_rated_artists]);
     }
@@ -29,9 +26,9 @@ class ExploreController extends Controller
 
     public function api_index()
     {
-        $latest_galleries = Gallery::orderBy('created_at', 'DESC')->limit(6)->get();
-        $most_rated_galleries = Gallery::orderBy('votes_average', 'DESC')->limit(6)->get();
-        return response()->json(['status' => 'good','latest_galleries' => $latest_galleries, 'most_rated_galleries' => $most_rated_galleries]);
+        $latest_paintings= Painting::orderBy('created_at', 'DESC')->limit(6)->get();
+        $most_rated_paintings = Painting::orderBy('votes_average', 'DESC')->limit(6)->get();
+        return response()->json(['status' => 'good','latest_paintings' => $latest_paintings, 'most_rated_paintings' => $most_rated_paintings]);
     }
 
 

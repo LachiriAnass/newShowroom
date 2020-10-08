@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header text-center">Title : {{ $painting->title }}</div>
-                <img src="/storage/public/painting/{{ $painting->image }}" class="card-img-top" alt="{{ $painting->title }}">
+                <img src="/storage/painting/{{ $painting->image }}" class="card-img-top" alt="{{ $painting->title }}">
 
 
                 <div class="card-body">
@@ -41,8 +41,6 @@
                             @endauth
 
 
-                    <h5 class="card-title">Gallery name : </h5>
-                    <a href="/gallery/{{$painting->gallery->id}}" class="painting-text">{{ $painting->gallery->title }}</a><br><br>
                     <h5 class="card-title">Description</h5>
                     <p class="painting-text">{{ $painting->description }}</p>
 
@@ -78,7 +76,7 @@
                         @endif
 
                     @else
-                        @if(!(Auth::user()->id == $painting->gallery->user_id))
+                        @if(!(Auth::user()->id == $painting->user_id))
                         @if($painting->for_sale)
                         <!-- Button trigger modal -->
 
@@ -98,7 +96,7 @@
                             </div>
                             <div class="modal-body">
                                 Price : {{ $painting->price }} $ <br>
-                                Email : {{ $painting->gallery->user->email }}
+                                Email : {{ $painting->user->email }}
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

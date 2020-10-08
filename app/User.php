@@ -35,15 +35,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function galleries()
+    public function paintings()
     {
-        return $this->hasMany('App\Gallery');
+        return $this->hasMany('App\Painting');
     }
 
-    public function galleryvotes()
-    {
-        return $this->hasMany('App\GalleryVote');
-    }
 
     public function paintingvotes()
     {
